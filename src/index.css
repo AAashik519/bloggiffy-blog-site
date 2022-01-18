@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.categoryDropDown{
+  width: 100%;
+  border-radius: 4px;
+  height: 35px;
+  border-color: #83ccc5;
+}
