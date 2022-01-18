@@ -10,7 +10,7 @@ const initialState ={
     title:'',
     description:'',
     category:'',
-    imageUrl:''
+    imageUrl:[]
 }
 const options= ['Travel ', 'Fashion', 'Fitness',"Sports", "Food",'Tech']
 const AddEditBlog = () => {
@@ -19,14 +19,20 @@ const AddEditBlog = () => {
     const {title, description,category,imageUrl} = formValue
     const navigate = useNavigate()
 
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
 
     }
-    const onInputChange=()=>{
+    const onInputChange=(e)=>{
 
     }
-    const onUploadImage=(e)=>{
-        
+    const onUploadImage=(file)=>{
+        console.log( file);
+        const formData = new FormData();
+        formData.append('upload_preset', "jipbsf3o")
+        axios.post('http://api.cloudinary.com/v1_1/dg62dohrs/image/upload', formData) 
+        .then((res) =>{
+            console.log(res);
+        })
     }
     const onCategoryChange=()=>{
 
@@ -54,8 +60,8 @@ const AddEditBlog = () => {
                    
                     /> 
                     <br /> 
-                    <MDBInput   type='file' onChange= {(e)=> onUploadImage(e.target.files)} required
-                    validation='Please provide a title' invalid
+                    <MDBInput type='file' onChange= {(e) => onUploadImage(e.target.files[0])} required
+                    validation='Please provide a title'  
                    
                     /> 
                     <br /> 
